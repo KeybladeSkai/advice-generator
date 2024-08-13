@@ -7,12 +7,14 @@ const App = () => {
   const [quote, setQuote] = useState("");
   const [quoteId, setQuoteId] = useState("");
   const [loading, setLoading] = useState(true);
-  const shuffle = () => {
+  const fetchData = () => {
     try {
-      axios.get("https://api.adviceslip.com/advice").then((response) => {
+      axios.get("https://api.adviceslip.com/advice")
+      .then((response) => {
         console.log(response.data.slip.advice);
         setQuote(response.data.slip.advice);
         setQuoteId(response.data.slip.id);
+        setLoading(false);
       });
     } catch (error) {
       console.log(error);
@@ -20,26 +22,13 @@ const App = () => {
   };
 
   useEffect(() => {
-    const fetchData=async()=>{
-
-      try {
-        setTimeout(async() => {
-          await axios.get("https://api.adviceslip.com/advice").then((response) => {
-            console.log(response.data.slip.advice);
-            setQuote(response.data.slip.advice);
-            setQuoteId(response.data.slip.id);
-            setLoading(false);
-          });
-        },1000);
-      } catch (error) {
-        console.log(error);
-      }
-    }
-    fetchData()
+    setTimeout(() => {
+      fetchData();
+    }, [1000]);
   }, []);
 
   return (
-    <div className="bg-black h-screen flex justify-center items-center px-2">
+    <div className="bg-black h-screen flex justify-center items-center px-2 overf">
       <div className="bg-[#17153B] w-[100%] h-[350px] text-white flex flex-col justify-center items-center py-8 text-center rounded-xl relative md:w-[60%] md:h-[300px]">
         {loading ? (
           <img src={load} />
@@ -56,7 +45,7 @@ const App = () => {
             </div>
 
             <div
-              onClick={shuffle}
+              onClick={fetchData}
               className="h-[80px] transform -translate-x-1/2 bottom-[-40px] left-[50%] w-[80px] absolute bg-[#40F8FF] flex justify-center items-center rounded-full z-[100]"
             >
               <img src={dice} className="bg-white w-[30px]" alt="" />
