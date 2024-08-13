@@ -39,7 +39,7 @@ const App = () => {
   }, []);
 
   return (
-    <div className="bg-black h-[100vh] flex justify-center items-center px-2">
+    <div className="bg-black h-screen flex justify-center items-center px-2">
       <div className="bg-[#17153B] w-[100%] h-[350px] text-white flex flex-col justify-center items-center py-8 text-center rounded-xl relative md:w-[60%] md:h-[300px]">
         {loading ? (
           <img src={load} />
