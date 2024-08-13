@@ -40,7 +40,7 @@ const App = () => {
 
   return (
     <div className="bg-black h-[100vh] flex justify-center items-center px-2">
-      <div className="bg-[#17153B] w-[100%] h-[350px] text-white flex flex-col justify-center items-center py-8 text-center rounded-xl relative md:w-[60%] md:h[500px]">
+      <div className="bg-[#17153B] w-[100%] h-[350px] text-white flex flex-col justify-center items-center py-8 text-center rounded-xl relative md:w-[60%] md:h-[300px]">
         {loading ? (
           <img src={load} />
         ) : (
@@ -49,7 +49,7 @@ const App = () => {
               ADVICE #{quoteId}
             </h1>
             <div className="overflow-auto h-[100vh]">
-              <p className="break-words font-bold w-[20rem] text-[2.3rem]  ">
+              <p className="break-words font-bold w-[20rem] md:w-[100%] md:px-2 text-[2.3rem]  ">
                 &quot;{quote}&quot;
                 {/* &quot;{quote}&quot; */}
               </p>
